@@ -1,0 +1,13 @@
+{% extends "teste.html" %}
+{% load static %}
+{% block page %}
+<div>
+    <h1> Cart Page! </h1>
+    <br>
+    <form action="{% url 'cart' %}" method="post">
+        {% csrf_token %}
+        <label>Name:</label><input type="text" name="name"/>
+        <button type="submit">Enviar</button>
+    </form>
+</div>
+{% endblock %}

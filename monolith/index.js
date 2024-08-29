@@ -8,7 +8,7 @@ app.get('/api/parts', (req, res) => res.send({
         {
             id: 1,
             description: 'my head description',
-            title: 'meu sonho',
+            title: 'my head',
             src: '/api/images/cachorropanca.png'
         },
     ],
@@ -16,7 +16,7 @@ app.get('/api/parts', (req, res) => res.send({
         {
             id: 2,
             description: 'my base description',
-            title: 'meu pau',
+            title: 'my base',
             src: '/api/images/cachorropanca.png'
         },
     ],
@@ -24,7 +24,7 @@ app.get('/api/parts', (req, res) => res.send({
         {
             id: 3,
             description: 'my arm description',
-            title: 'meu braço',
+            title: 'my arm',
             src: '/api/images/cachorropanca.png'
         },
     ]

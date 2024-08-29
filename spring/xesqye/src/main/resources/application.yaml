@@ -1,0 +1,17 @@
+server:
+  port: 3000
+spring:
+  application:
+    name: xesqye
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/springFirstClass?createDatabaseIfNotExist=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver

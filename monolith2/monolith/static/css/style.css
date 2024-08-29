@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: blueviolet;
+}
+
+.btn-test {
+    border: none;
+    background-color: #2f2f2f;
+    color: white;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 1rem;
+}
