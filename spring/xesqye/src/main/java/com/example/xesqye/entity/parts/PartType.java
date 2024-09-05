@@ -1,4 +1,4 @@
-package com.example.xesqye.entities.parts;
+package com.example.xesqye.entity.parts;
 
 public enum PartType {
     HEAD,

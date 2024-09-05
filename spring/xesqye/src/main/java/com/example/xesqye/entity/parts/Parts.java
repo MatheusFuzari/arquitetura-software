@@ -1,4 +1,4 @@
-package com.example.xesqye.entities.parts;
+package com.example.xesqye.entity.parts;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -7,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
