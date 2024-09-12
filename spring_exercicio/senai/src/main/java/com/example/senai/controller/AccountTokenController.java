@@ -1,0 +1,4 @@
+package com.example.senai.controller;
+
+public class AccountTokenController {
+}

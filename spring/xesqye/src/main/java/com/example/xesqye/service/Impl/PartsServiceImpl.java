@@ -6,6 +6,9 @@ import com.example.xesqye.service.PartsService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +22,8 @@ public class PartsServiceImpl implements PartsService {
     private PartsRepository partsRepository;
 
     @Override
-    public List<Parts> getAllParts() {
-        return this.partsRepository.findAll();
+    public Page<Parts> getAllParts(Specification<Parts> spec, Pageable page) {
+        return this.partsRepository.findAll(spec, page);
     }
 
     @Override

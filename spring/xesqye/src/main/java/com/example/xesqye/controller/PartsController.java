@@ -4,9 +4,14 @@ import com.example.xesqye.dto.PartsDto;
 import com.example.xesqye.dto.UpdatePartsDto;
 import com.example.xesqye.entity.parts.Parts;
 import com.example.xesqye.service.PartsService;
+import com.example.xesqye.specifications.PartsSpecification;
 import jakarta.validation.Valid;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,9 +29,9 @@ public class PartsController {
 
 
     @GetMapping("/parts")
-    public ResponseEntity<List<Parts>> getAllParts() {
+    public ResponseEntity<Page<Parts>> getAllParts(PartsSpecification.PartsSpec spec, Pageable page) {
         //select * from parts;
-        List<Parts> parts = partsService.getAllParts();
+        Page<Parts> parts = partsService.getAllParts(spec, page);
         return ResponseEntity.ok(parts);
     }
 
