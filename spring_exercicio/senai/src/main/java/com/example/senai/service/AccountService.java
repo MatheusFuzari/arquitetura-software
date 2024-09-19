@@ -11,12 +11,14 @@ import java.util.UUID;
 
 public interface AccountService {
 
-    Page<Account> getAllAccountTokens(Pageable page, Specification<Account> spec);
+    Account getAccount(UUID id);
 
-    List<Account> saveAccountTokens(List<Account> accounts);
+    Page<Account> getAllAccount(Pageable page, Specification<Account> spec);
 
-    Account updateAccountToken(Account account);
+    List<Account> saveAccount(List<Account> accounts);
 
-    void deleteAccountToken(UUID id);
+    Account updateAccount(UUID id, Account account);
+
+    void deleteAccount(UUID id);
 
 }

@@ -10,11 +10,13 @@ import java.util.UUID;
 
 public interface TokenService {
 
+    Token getToken(UUID id);
+
     Page<Token> getAllTokens(Pageable page, Specification<Token> spec);
 
     List<Token> saveTokens(List<Token> tokens);
 
-    Token updateToken(Token token);
+    Token updateToken(UUID id, Token token);
 
     void deleteToken(UUID id);
 }
