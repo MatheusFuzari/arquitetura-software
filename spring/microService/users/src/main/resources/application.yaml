@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   application:
-    name: users
+    name: users-microservice
   jpa:
     hibernate:
       ddl-auto: update
@@ -18,5 +18,9 @@ spring:
 
 eureka:
   client:
-    serviceUrl:
+    service-url:
       defaultZone: http://localhost:8082/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    hostname: localhost

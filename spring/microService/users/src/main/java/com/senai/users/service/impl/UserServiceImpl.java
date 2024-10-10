@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Page<User> getAllUsers(Specification<User> spec, Pageable page) {
-        return this.userRepository.findAll(page);
+        return this.userRepository.findAll(spec, page);
     }
 
     @Override
