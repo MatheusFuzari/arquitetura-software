@@ -2,6 +2,7 @@ package com.senai.users.controller;
 
 import com.senai.users.dto.UserDTO;
 import com.senai.users.entity.User;
+import com.senai.users.exceptions.UserNotFoundException;
 import com.senai.users.service.impl.UserServiceImpl;
 import com.senai.users.specifications.UserSpecification;
 import jakarta.validation.Valid;
@@ -25,6 +26,11 @@ public class UserController {
 
     @Autowired
     private UserServiceImpl userService;
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable UUID id) throws UserNotFoundException {
+        return ResponseEntity.status(HttpStatus.OK).body(this.userService.getSingleUser(id));
+    }
 
     @GetMapping("/users")
     public ResponseEntity<Page<User>> getAllUsers(UserSpecification.UserSpec spec, Pageable page){

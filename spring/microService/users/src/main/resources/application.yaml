@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
 spring:
   application:
     name: users-microservice
@@ -9,7 +9,7 @@ spring:
     properties:
       hibernate:
         dialect: org.hibernate.dialect.MySQL8Dialect
-        show-sql: true
+    show-sql: true
   datasource:
     url: jdbc:mysql://localhost:3306/SenaiUsers?createDatabaseIfNotExist=true
     username: root
@@ -19,7 +19,7 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8082/eureka/
+      defaultZone: 'http://localhost:8089/eureka/'
     register-with-eureka: true
     fetch-registry: true
   instance:

@@ -9,12 +9,12 @@ spring:
       discovery:
         locator:
           enabled: true
-          lower-case-service-id: true #opitional
+          lower-case-service-id: true #opcional
 
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:8082/eureka/
+      defaultZone: 'http://localhost:8089/eureka/'
     register-with-eureka: true
     fetch-registry: true
   instance:

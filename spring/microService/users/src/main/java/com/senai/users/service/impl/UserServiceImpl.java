@@ -1,6 +1,7 @@
 package com.senai.users.service.impl;
 
 import com.senai.users.entity.User;
+import com.senai.users.exceptions.UserNotFoundException;
 import com.senai.users.repository.UserRepository;
 import com.senai.users.service.UserService;
 import org.springframework.beans.BeanUtils;
@@ -19,6 +20,13 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Override
+    public User getSingleUser(UUID id) throws UserNotFoundException{
+        return this.userRepository.findById(id).orElseThrow(
+                UserNotFoundException::new
+        );
+    }
 
     @Override
     public Page<User> getAllUsers(Specification<User> spec, Pageable page) {
