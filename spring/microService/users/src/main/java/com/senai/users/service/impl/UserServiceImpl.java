@@ -51,11 +51,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUser(UUID id) {
-        Optional<User> part = this.userRepository.findById(id);
+    public void deleteUser(UUID id) throws UserNotFoundException {
+        User part = this.userRepository.findById(id).orElseThrow(
+                UserNotFoundException::new
+        );
 
-        if(part.isPresent()){
-            this.userRepository.delete(part.get());
-        }
+        this.userRepository.delete(part);
     }
 }

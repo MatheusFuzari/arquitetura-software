@@ -28,7 +28,7 @@ public class UserController {
     private UserServiceImpl userService;
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable UUID id) throws UserNotFoundException {
+    public ResponseEntity<User> getUserById(@PathVariable UUID id) throws UserNotFoundException {
         return ResponseEntity.status(HttpStatus.OK).body(this.userService.getSingleUser(id));
     }
 
@@ -60,7 +60,7 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("users/{id}")
-    public void deleteUser(@PathVariable UUID id){
+    public void deleteUser(@PathVariable UUID id) throws UserNotFoundException{
         this.userService.deleteUser(id);
     }
 }

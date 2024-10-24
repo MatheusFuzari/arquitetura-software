@@ -1,5 +1,6 @@
 package com.senai.users.exceptions;
 
+import com.senai.users.entity.ExceptionResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -19,6 +20,10 @@ public class UsersExceptionHandler extends ResponseEntityExceptionHandler {
     ) {
         log.error("Error: {}, Message: {}, Method: {}, URL: {}", e.getCode(), e.getMessage(), servletRequest.getMethod(), servletRequest.getRequestURI());
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e);
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                ExceptionResponse.builder()
+                        .code(e.getCode())
+                        .message(e.getMessage())
+                        .build());
     }
 }

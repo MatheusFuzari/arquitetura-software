@@ -5,7 +5,6 @@ import com.example.xesqye.repository.PartsRepository;
 import com.example.xesqye.service.PartsService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
@@ -28,6 +27,7 @@ public class PartsServiceImpl implements PartsService {
 
     @Override
     public List<Parts> saveParts(List<Parts> parts) {
+
         return this.partsRepository.saveAll(parts);
     }
 
