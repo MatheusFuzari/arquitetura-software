@@ -1,9 +1,6 @@
 package com.example.xesqye.controller;
 
-import com.example.xesqye.dto.PartsDto;
-import com.example.xesqye.dto.RobotsDTO;
-import com.example.xesqye.dto.UpdatePartsDto;
-import com.example.xesqye.dto.UpdateRobotsDTO;
+import com.example.xesqye.dto.*;
 import com.example.xesqye.entity.parts.Parts;
 import com.example.xesqye.entity.robots.Robots;
 import com.example.xesqye.service.PartsService;
@@ -30,11 +27,17 @@ public class RobotsController {
     @Autowired
     RobotsService robotsService;
 
-
     @GetMapping("/robots")
     public ResponseEntity<Page<Robots>> getAllRobots(RobotsSpecification.RobotSpec spec, Pageable page) {
         //select * from parts;
         Page<Robots> parts = robotsService.getAllRobots(spec, page);
+        return ResponseEntity.ok(parts);
+    }
+
+    @GetMapping("/robots/full")
+    public ResponseEntity<Page<RobotsFullDto>> getFullRobots(RobotsSpecification.RobotSpec spec, Pageable page) {
+        //select * from parts;
+        Page<RobotsFullDto> parts = robotsService.getFullRobots(spec, page);
         return ResponseEntity.ok(parts);
     }
 

@@ -37,6 +37,11 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.OK).body(this.userService.getAllUsers(spec, page));
     }
 
+    @GetMapping("/user-ids")
+    public ResponseEntity<List<User>> getUsersById(@RequestParam List<UUID> ids) {
+        return ResponseEntity.status(HttpStatus.OK).body(this.userService.getUsersById(ids));
+    }
+
     @PostMapping("/users")
     public ResponseEntity<List<User>> createUsers(@RequestBody @Valid List<UserDTO> users){
         List<User> userList = users.stream().map(

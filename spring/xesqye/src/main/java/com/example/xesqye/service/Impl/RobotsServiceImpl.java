@@ -1,6 +1,8 @@
 package com.example.xesqye.service.Impl;
 
 import com.example.xesqye.client.UserService;
+import com.example.xesqye.dto.RobotsFullDto;
+import com.example.xesqye.dto.UserDTO;
 import com.example.xesqye.entity.parts.Parts;
 import com.example.xesqye.entity.robots.Robots;
 import com.example.xesqye.repository.RobotsRepository;
@@ -10,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -30,6 +33,26 @@ public class RobotsServiceImpl implements RobotsService {
     private UserService userService;
 
     @Override
+    public Page<RobotsFullDto> getFullRobots(Specification<Robots> spec, Pageable page) {
+        Page<Robots> robotsFound = this.getAllRobots(spec, page);
+        List<RobotsFullDto> robotsDtos = new ArrayList<>();
+        List<UserDTO> userDTOS = userService.getUsersByIds(
+                robotsFound.getContent().stream().map(Robots::getUserId).toList()
+        );
+
+        robotsFound.getContent().stream().forEach(
+                robot -> {
+                    var userFound = userDTOS.stream().filter(u -> u.getId().equals(robot.getUserId())).findFirst().orElse(null);
+
+                    robotsDtos.add(
+
+                    )
+                }
+        );
+        return new PageImpl<>(robotsDtos, robotsFound.getPageable(), robotsFound.getTotalElements());
+    }
+
+    @Override
     public Page<Robots> getAllRobots(Specification<Robots> spec, Pageable page) {
         return this.robotsRepository.findAll(spec, page);
     }
@@ -38,8 +61,7 @@ public class RobotsServiceImpl implements RobotsService {
     public List<Robots> saveRobots(List<Robots> robots) {
         List<UUID> robotIds = new ArrayList<>();
         robots.stream().forEach(robot -> {
-            // lambda
-            if(userService.checkIfUserExists(robot.getId())){
+            if(userService.checkIfUserExists(robot.getUserId())){
                 robotIds.add(
                         robotsRepository.saveAndFlush(robot).getId()
                 );

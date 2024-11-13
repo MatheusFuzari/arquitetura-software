@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -27,5 +28,9 @@ public class UserService {
 
     public boolean checkIfUserExists(UUID id){
         return Objects.nonNull(getUserIfExists(id));
+    }
+
+    public List<UserDTO> getUsersByIds(List<UUID> userIds){
+        return userClient.getUsersById(userIds);
     }
 }

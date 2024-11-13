@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -14,6 +15,10 @@ import java.util.UUID;
 @Configuration
 public interface UserClient {
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/users/{userId}")
     UserDTO getUserById(@PathVariable UUID userId);
+
+    @GetMapping("/user-ids/{usersIds}")
+    List<UserDTO> getUsersById(@PathVariable List<UUID> userIds);
+
 }

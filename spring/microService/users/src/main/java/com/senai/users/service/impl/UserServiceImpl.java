@@ -22,6 +22,11 @@ public class UserServiceImpl implements UserService {
     private UserRepository userRepository;
 
     @Override
+    public List<User> getUsersById(List<UUID> ids) {
+        return this.userRepository.findAllById(ids);
+    }
+
+    @Override
     public User getSingleUser(UUID id) throws UserNotFoundException{
         return this.userRepository.findById(id).orElseThrow(
                 UserNotFoundException::new

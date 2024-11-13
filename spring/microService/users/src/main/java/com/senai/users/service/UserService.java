@@ -15,6 +15,8 @@ public interface UserService {
 
     Page<User> getAllUsers(Specification<User> spec, Pageable page);
 
+    List<User> getUsersById(List<UUID> ids);
+
     List<User> createUsers(List<User> user);
 
     User updateUser(User user);
